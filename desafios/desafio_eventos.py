@@ -9,13 +9,13 @@ for _ in range(n):
     linha = input().strip()
     
     posicao_virgula = linha.rfind(",")
-    funcao = (linha[posicao_virgula + 1:])    
-    participante = linha[:posicao_virgula]
+    tema = linha[posicao_virgula + 1:].strip() 
+    participante = linha[:posicao_virgula].strip()
 
-    eventos.update({funcao:participante})
-
+    if tema not in eventos:
+        eventos[tema] = []
+    eventos[tema].append(participante) 
 
 # Exibe os grupos organizados
-
 for tema, participantes in eventos.items():
     print(f"{tema}: {', '.join(participantes)}")

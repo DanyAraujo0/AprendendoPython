@@ -4,4 +4,5 @@ print("Hello World!!")
 #modo interativo, terminal: python
 #help - documentação
 #exit() - sai
-#ctrl+L limpa
+
+
