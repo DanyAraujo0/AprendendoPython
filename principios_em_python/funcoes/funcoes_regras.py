@@ -37,20 +37,30 @@ def criar_carro(modelo, ano, placa, /, marca, motor, combustivel):
     print(modelo, ano, placa, marca, motor, combustivel)
 
 
-# criar_carro("Palio", 1999, "ABC-1234", marca="Fiat", motor="1.0", combustivel="Gasolina")
-criar_carro(modelo="Palio", ano=1999, placa="ABC-1234", marca="Fiat", motor="1.0", combustivel="Gasolina")  # inválido
+criar_carro("Palio", 1999, "ABC-1234", marca="Fiat", motor="1.0", combustivel="Gasolina")
+# criar_carro(modelo="Palio", ano=1999, placa="ABC-1234", marca="Fiat", motor="1.0", combustivel="Gasolina")  # inválido
 
 # passando por nome
 def criar_carro(modelo, ano, placa, *, marca, motor, combustivel):
     print(modelo, ano, placa, marca, motor, combustivel)
     
-criar_carro("Palio", 1999, "ABC-1234", "Fiat", "1.0", "Gasolina")
-# criar_carro(modelo="Palio", ano=1999, placa="ABC-1234", marca="Fiat", motor="1.0", combustivel="Gasolina")  # inválido
+# criar_carro("Palio", 1999, "ABC-1234", "Fiat", "1.0", "Gasolina")
+criar_carro(modelo="Palio", ano=1999, placa="ABC-1234", marca="Fiat", motor="1.0", combustivel="Gasolina")  # inválido
 
 
 # hibrido
 def criar_carro(modelo, ano, placa, /, *, marca, motor, combustivel):
     print(modelo, ano, placa, marca, motor, combustivel)
     
-criar_carro("Palio", 1999, "ABC-1234", "Fiat", "1.0", "Gasolina")
+# criar_carro("Palio", 1999, "ABC-1234", "Fiat", "1.0", "Gasolina")
 # criar_carro(modelo="Palio", ano=1999, placa="ABC-1234", marca="Fiat", motor="1.0", combustivel="Gasolina")  # inválido
+
+# variaveis globais
+salario = 2000
+
+def salario_bonus(bonus):
+    global salario
+    salario += bonus
+    return salario
+
+print(salario_bonus(150))
