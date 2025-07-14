@@ -1,0 +1,7 @@
+pip pode ser usado para instalar bibliotecas em python
+pipenv
+pip list
+pip install
+pip unstall
+pipnv graph
+pipenv clean
