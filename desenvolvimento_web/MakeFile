@@ -1,2 +1,8 @@
 run:
 	pipenv run uvicorn workout_api.main:app --reload
+
+create-migrations:
+	pipenv run alembic revision --autogenerate -m "init_db"
+
+run-migrations:
+	pipenv run alembic upgrade head
