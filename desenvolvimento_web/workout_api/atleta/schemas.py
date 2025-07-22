@@ -1,7 +1,9 @@
 from typing import Annotated
-from pydantic import BaseModel, Field, PositiveFloat
+from pydantic import UUID4, BaseModel, Field, PositiveFloat
 
-from desenvolvimento_web.workout_api.contrib.schemas import BaseSchema
+from workout_api.centro_treinamento.schemas import CentroTreinamentoAtleta
+from workout_api.categorias.schemas import CategoriaIn
+from workout_api.contrib.schemas import BaseSchema, OutMixin
 
 class Atleta(BaseSchema):
     nome: Annotated[str, Field(description='Nome do atleta', example='Joao', max_length=50)]
@@ -10,3 +12,11 @@ class Atleta(BaseSchema):
     peso: Annotated[PositiveFloat, Field(description='Peso do atleta', example=80.10)]
     altura: Annotated[PositiveFloat, Field(description='Altura do atleta', example=188.77)]
     sexo: Annotated[str, Field(description='Sexo do atleta',example='M', max_length=1)]
+    categoria: Annotated[CategoriaIn, Field(description='Categoria do atleta')]
+    centro_treinamento: Annotated[CentroTreinamentoAtleta, Field(description='Centro de Treinamento do atleta')]
+
+class AtletaIn(Atleta):
+    nome: Annotated[str, Field(description='Nome do Atleta', example='Joao', max_length=50)]
+
+class AtletaOut(Atleta, OutMixin):
+    id: Annotated[UUID4, Field(description= 'Identificador do Atleta')]
