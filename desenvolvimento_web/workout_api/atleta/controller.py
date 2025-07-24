@@ -1,5 +1,4 @@
 from datetime import datetime
-from sqlite3 import IntegrityError
 from uuid import uuid4
 from fastapi import APIRouter, Body, Depends, status, HTTPException, Query
 from fastapi_pagination import Page
@@ -11,6 +10,7 @@ from workout_api.atleta.models import AtletaModel
 from workout_api.atleta.schemas import AtletaIn, AtletaOut, AtletaUpdate
 from workout_api.contrib.dependencies import DatabaseDependency
 from sqlalchemy.future import select
+from sqlalchemy.exc import IntegrityError
 
 router = APIRouter()
 
@@ -60,7 +60,7 @@ async def get_categoria_e_ct(
     return categoria, centro_treinamento
 
 @router.post(
-    '/',
+    '/',    
     summary='Criar novo atleta',
     status_code=status.HTTP_201_CREATED,
     response_model=AtletaOut,
@@ -71,10 +71,13 @@ async def create(
     atleta_in: AtletaIn = Body(...) 
 ):
     categoria, centro_treinamento = dados_validados
-    
+
     try:
-        atleta_out = AtletaOut(id=uuid4(), created_at=datetime.utcnow(), **atleta_in.model_dump())
-        atleta_model = AtletaModel(**atleta_out.model_dump(exclude={'categoria', 'centro_treinamento'}))
+        atleta_model = AtletaModel(
+            id=uuid4(),
+            created_at=datetime.utcnow(),
+            **atleta_in.model_dump(exclude={'categoria', 'centro_treinamento'})
+        )
         
         atleta_model.categoria_id = categoria.pk_id
         atleta_model.centro_treinamento_id = centro_treinamento.pk_id
@@ -82,7 +85,7 @@ async def create(
         db_session.add(atleta_model)
         await db_session.commit()
 
-    except IntegrityError: # arrumar
+    except IntegrityError: 
         raise HTTPException(
             status_code=status.HTTP_303_SEE_OTHER,
             detail=f"Já existe um atleta cadastrado com o cpf: {atleta_in.cpf}"
@@ -93,7 +96,7 @@ async def create(
             detail=f'Ocorreu um erro ao inserir os dados no banco: {e}'
         )
 
-    return atleta_out
+    return atleta_model
 
 # @router.get(
 #     '/',
