@@ -10,6 +10,7 @@ sqlalchemy = "*"
 pydantic = "*"
 pydantic-settings = "*"
 asyncpg = "*"
+fastapi-pagination = {extras = ["sqlalchemy"], version = "*"}
 
 [dev-packages]
 

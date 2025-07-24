@@ -1,5 +1,7 @@
 from uuid import uuid4
 from fastapi import APIRouter, Body, status, HTTPException
+from fastapi_pagination import Page
+from fastapi_pagination.ext.sqlalchemy import paginate as paginate_sqlalchemy   
 from pydantic import UUID4
 from workout_api.categorias.models import CategoriaModel
 from workout_api.categorias.schemas import CategoriaIn, CategoriaOut
@@ -33,14 +35,11 @@ async def post(
         '/',
         summary='Consultar todas as Categorias',
         status_code=status.HTTP_200_OK,
-        response_model=list[CategoriaOut],
+        response_model=Page[CategoriaOut],
 )
-async def query(db_session: DatabaseDependency)->list[CategoriaOut]:
-    categorias: list[CategoriaOut] = (
-        await db_session.execute(select(CategoriaModel))
-        ).scalars().all()
+async def query(db_session: DatabaseDependency)->Page[CategoriaOut]:
     
-    return categorias
+    return await paginate_sqlalchemy(db_session, select(CategoriaModel))
 
 @router.get(
         '/{id}',
@@ -48,7 +47,7 @@ async def query(db_session: DatabaseDependency)->list[CategoriaOut]:
         status_code=status.HTTP_200_OK,
         response_model=CategoriaOut,
 )
-async def query(id: UUID4 ,db_session: DatabaseDependency)->list[CategoriaOut]:
+async def query(id: UUID4 ,db_session: DatabaseDependency)-> CategoriaOut:
     categoria: CategoriaOut = (
         await db_session.execute(select(CategoriaModel).filter_by(id=id))
         ).scalars().first()
