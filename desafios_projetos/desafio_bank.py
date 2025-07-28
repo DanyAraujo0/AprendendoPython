@@ -18,7 +18,7 @@ while True:
 
     if opcao == "d":
         valor = float(input("Informe o valor para o depósito: "))
-        if valor>0:
+        if valor > 0:
             saldo += valor
             extrato += f"Deposito: R$ {valor:.2f}\n"
             print("Operação bem sucedida!")
@@ -34,9 +34,11 @@ while True:
             if valor > saldo:
                 print("Saldo insuficiente! Não é possível realizar o saque")
             elif valor > limite:
-                print("O limite por saque é de R$ {limite}}! Não é possível realizar o saque")
+                print(
+                    "O limite por saque é de R$ {limite}}! Não é possível realizar o saque"
+                )
             elif valor <= 0:
-                print("Valor inválido! Não é possível realizar o saque") 
+                print("Valor inválido! Não é possível realizar o saque")
             else:
                 saldo -= valor
                 extrato += f"Saque: R$ {valor:.2f}\n"

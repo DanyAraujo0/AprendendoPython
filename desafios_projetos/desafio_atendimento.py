@@ -10,10 +10,11 @@ for _ in range(n):
     idade = int(idade)
     pacientes.append((nome, idade, status))
 
+
 # TODO: Ordene por prioridade: urgente > idosos > demais:
 def ordem_pacientes(pacientes):
     ordenada = []
-    
+
     for i, (nome, idade, status) in enumerate(pacientes):
         if status.strip().lower() == "urgente":
             prioridade = 0
@@ -21,11 +22,12 @@ def ordem_pacientes(pacientes):
             prioridade = 1
         else:
             prioridade = 2
-        
+
         ordenada.append((prioridade, -idade, i, nome))
 
     ordenada.sort()
     return [item[3] for item in ordenada]
+
 
 # TODO: Exiba a ordem de atendimento com título e vírgulas:
 

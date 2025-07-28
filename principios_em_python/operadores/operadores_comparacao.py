@@ -7,4 +7,3 @@ print(saldo <= saque)
 print(saldo >= saque)
 print(saldo > saque)
 print(saldo < saque)
-

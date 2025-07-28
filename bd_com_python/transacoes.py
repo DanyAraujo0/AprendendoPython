@@ -8,8 +8,13 @@ cursor = conexao.cursor()
 cursor.row_factory = sqlite3.Row
 
 try:
-    cursor.execute("INSERT INTO clientes (nome,email) VALUES (?,?)",("danid","dani@gmail"))
-    cursor.execute("INSERT INTO clientes (id,nome,email) VALUES (?,?,?)",(2,"danit","dani@gmail"))
+    cursor.execute(
+        "INSERT INTO clientes (nome,email) VALUES (?,?)", ("danid", "dani@gmail")
+    )
+    cursor.execute(
+        "INSERT INTO clientes (id,nome,email) VALUES (?,?,?)",
+        (2, "danit", "dani@gmail"),
+    )
     conexao.commit()
 except Exception as exc:
     print(f"Um erro ocorreu ! {exc}")

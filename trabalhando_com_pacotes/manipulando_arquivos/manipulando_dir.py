@@ -1,8 +1,9 @@
-import os
 import shutil
 from pathlib import Path
 
-ROOT_PATH = Path(__file__).parent # atraves do path ele pega o caminho do arquivo e não importa o sistema operacional da maq
+ROOT_PATH = Path(
+    __file__
+).parent  # atraves do path ele pega o caminho do arquivo e não importa o sistema operacional da maq
 
 # os.mkdir(ROOT_PATH / 'novo_dir')
 

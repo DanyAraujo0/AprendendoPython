@@ -7,11 +7,14 @@ def meu_decorador(funcao):
 
     return envolope
 
+
 def ola_mundo():
     print("Olá mundo! ")
 
+
 ola_mundo = meu_decorador(ola_mundo)
 ola_mundo()
+
 
 # açucar sintatico - mesma coisa de antes porem usamos o @ e diminuimos as linhas
 @meu_decorador

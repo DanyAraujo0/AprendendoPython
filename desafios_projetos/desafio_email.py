@@ -17,6 +17,6 @@ else:
         else:
             verifica = False
     if verifica:
-        print("E-mail válido")   
+        print("E-mail válido")
     else:
         print("E-mail inválido")

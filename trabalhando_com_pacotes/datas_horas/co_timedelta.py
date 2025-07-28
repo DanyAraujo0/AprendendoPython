@@ -1,4 +1,4 @@
-from datetime import date, datetime, timedelta
+from datetime import datetime, timedelta
 
 # o timedelta é usado para diferença entre horarios
 
@@ -6,7 +6,7 @@ tipo_carro = "P"
 tempo_p = 30
 tempo_m = 45
 tempo_g = 60
-data_atual = datetime.now() # utc now serve pra qualquer localidade do usuario
+data_atual = datetime.now()  # utc now serve pra qualquer localidade do usuario
 
 if tipo_carro == "P":
     data_estimada = data_atual + timedelta(minutes=tempo_p)

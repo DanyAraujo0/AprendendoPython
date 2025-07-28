@@ -7,11 +7,13 @@ def sacar(valor):
 
     print("Obrigado ")
 
+
 def depositar(valor):
     saldo = 500
     saldo += valor
 
     print("O valor foi depositado")
+
 
 sacar(500)
 

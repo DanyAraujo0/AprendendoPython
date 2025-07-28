@@ -1,9 +1,9 @@
 class Pedido:
     def __init__(self):
-        self.itens = []  
-    
+        self.itens = []
+
     # TODO: Crie um método chamado adicionar_item que recebe um preço e adiciona à lista de itens:
-    def adicionar_item(self,preco):
+    def adicionar_item(self, preco):
         # TODO: Adicione o preço do item à lista:
         self.itens.append(preco)
 
@@ -15,6 +15,7 @@ class Pedido:
         # TODO: Retorne a soma de todos os preços
         return total
 
+
 quantidade_pedidos = int(input().strip())
 
 pedido = Pedido()
@@ -22,7 +23,7 @@ pedido = Pedido()
 for _ in range(quantidade_pedidos):
     entrada = input().strip()
     nome, preco = entrada.rsplit(" ", 1)
-    #TODO: Chame o método adicionar_item corretamente: 
+    # TODO: Chame o método adicionar_item corretamente:
     preco = float(preco)
     pedido.adicionar_item(preco)
 

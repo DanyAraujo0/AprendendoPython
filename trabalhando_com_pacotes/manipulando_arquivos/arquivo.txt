@@ -1,16 +1,16 @@
-texto = """Nas trilhas do vento, caminho a sonhar,  
-Com passos suaves, começo a pensar.  
-A vida é um livro que insiste em mudar,  
+texto = """Nas trilhas do vento, caminho a sonhar,
+Com passos suaves, começo a pensar.
+A vida é um livro que insiste em mudar,
 Cada página um tempo, um novo lugar.
 
-As folhas que caem contam histórias,  
-De lutas vencidas, de velhas memórias.  
-O tempo não para, mas sabe ensinar,  
+As folhas que caem contam histórias,
+De lutas vencidas, de velhas memórias.
+O tempo não para, mas sabe ensinar,
 A dor e a alegria que vêm se encontrar.
 
-No silêncio da noite, estrelas a brilhar,  
-São faróis de esperança no vasto luar.  
-E mesmo que chova, e o céu vá chorar,  
+No silêncio da noite, estrelas a brilhar,
+São faróis de esperança no vasto luar.
+E mesmo que chova, e o céu vá chorar,
 O sol sempre volta pra nos abraçar."""
 
 with open("arquivo.txt", "w", encoding="utf-8") as file:

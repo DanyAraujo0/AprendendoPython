@@ -4,69 +4,81 @@ from fastapi_pagination import Page
 from fastapi_pagination.ext.sqlalchemy import paginate as paginate_sqlalchemy
 from pydantic import UUID4
 from workout_api.centro_treinamento.models import CentroTreinamentoModel
-from workout_api.centro_treinamento.schemas import CentroTreinamentoIn, CentroTreinamentoOut
+from workout_api.centro_treinamento.schemas import (
+    CentroTreinamentoIn,
+    CentroTreinamentoOut,
+)
 from workout_api.contrib.dependencies import DatabaseDependency
 from sqlalchemy.future import select
 from sqlalchemy.exc import IntegrityError
 
 router = APIRouter()
 
+
 @router.post(
-        '/',
-        summary='Criar um novo Centro de Treinamento',
-        status_code=status.HTTP_201_CREATED,
-        response_model=CentroTreinamentoOut,
+    "/",
+    summary="Criar um novo Centro de Treinamento",
+    status_code=status.HTTP_201_CREATED,
+    response_model=CentroTreinamentoOut,
 )
 async def post(
     db_session: DatabaseDependency,
-    centro_treinamento_in: CentroTreinamentoIn = Body(...)
-    ) -> CentroTreinamentoOut:
-
+    centro_treinamento_in: CentroTreinamentoIn = Body(...),
+) -> CentroTreinamentoOut:
     try:
-        centro_treinamento_out = CentroTreinamentoOut(id=uuid4(), **centro_treinamento_in.model_dump())
-        centro_treinamento_model = CentroTreinamentoModel(**centro_treinamento_out.model_dump())
+        centro_treinamento_out = CentroTreinamentoOut(
+            id=uuid4(), **centro_treinamento_in.model_dump()
+        )
+        centro_treinamento_model = CentroTreinamentoModel(
+            **centro_treinamento_out.model_dump()
+        )
 
         db_session.add(centro_treinamento_model)
-        await db_session.commit()       
+        await db_session.commit()
 
-    except IntegrityError: 
+    except IntegrityError:
         raise HTTPException(
             status_code=status.HTTP_303_SEE_OTHER,
-            detail=f"Já existe um Centro de Treinamento cadastrado com o nome: {centro_treinamento_in.nome}"
+            detail=f"Já existe um Centro de Treinamento cadastrado com o nome: {centro_treinamento_in.nome}",
         )
-    
+
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f'Ocorreu um erro ao inserir os dados no banco: {e}'
+            detail=f"Ocorreu um erro ao inserir os dados no banco: {e}",
         )
 
     return centro_treinamento_out
 
-@router.get(
-        '/',
-        summary='Consultar todos os Centros de Treinamentos',
-        status_code=status.HTTP_200_OK,
-        response_model=Page[CentroTreinamentoOut],
-)
-async def query(db_session: DatabaseDependency)->Page[CentroTreinamentoOut]:
 
+@router.get(
+    "/",
+    summary="Consultar todos os Centros de Treinamentos",
+    status_code=status.HTTP_200_OK,
+    response_model=Page[CentroTreinamentoOut],
+)
+async def query(db_session: DatabaseDependency) -> Page[CentroTreinamentoOut]:
     return await paginate_sqlalchemy(db_session, select(CentroTreinamentoModel))
 
+
 @router.get(
-        '/{id}',
-        summary='Consultar um Centro de Treinamento pelo id',
-        status_code=status.HTTP_200_OK,
-        response_model=CentroTreinamentoOut,
+    "/{id}",
+    summary="Consultar um Centro de Treinamento pelo id",
+    status_code=status.HTTP_200_OK,
+    response_model=CentroTreinamentoOut,
 )
-async def query(id: UUID4 ,db_session: DatabaseDependency)->list[CentroTreinamentoOut]:
+async def query(
+    id: UUID4, db_session: DatabaseDependency
+) -> list[CentroTreinamentoOut]:
     centro_treinamento: CentroTreinamentoOut = (
-        await db_session.execute(select(CentroTreinamentoModel).filter_by(id=id))
-        ).scalars().first()
+        (await db_session.execute(select(CentroTreinamentoModel).filter_by(id=id)))
+        .scalars()
+        .first()
+    )
     if not centro_treinamento:
         raise HTTPException(
-            status_code= status.HTTP_404_NOT_FOUND, 
-            detail=f'Centro de Treinamento não encontrado no id {id}'
-            )
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Centro de Treinamento não encontrado no id {id}",
+        )
 
     return centro_treinamento

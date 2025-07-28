@@ -1,6 +1,6 @@
 # declarando dicionario - no dicionario a chave é imultavel
 
-pessoa = {"nome":"Dany","idade":19}
+pessoa = {"nome": "Dany", "idade": 19}
 
 pessoa = dict(nome="Dany", idade=19)
 
@@ -20,11 +20,11 @@ print(pessoa["nome"])
 # dicionario alinhado -
 
 contatos = {
-    "dany": {"nome":"Danyelle","telefone":"3334-9999"},
-    "teo": {"nome":"Teodoro","telefone":"4444-9999"},
-    "gabi": {"nome":"Gabriela","telefone":"5555-9999"},
-    "jao": {"nome":"João","telefone":"6611-9999", "extra": {"a": 1}},
-    }
+    "dany": {"nome": "Danyelle", "telefone": "3334-9999"},
+    "teo": {"nome": "Teodoro", "telefone": "4444-9999"},
+    "gabi": {"nome": "Gabriela", "telefone": "5555-9999"},
+    "jao": {"nome": "João", "telefone": "6611-9999", "extra": {"a": 1}},
+}
 
 telefone = contatos["teo"]["telefone"]
 print(telefone)
@@ -37,5 +37,5 @@ print(extra)
 for chave in contatos:
     print(chave, contatos[chave])
 
-for chave, valor in contatos.items(): # lista de tuplas mais legivel
-    print(chave,valor)
+for chave, valor in contatos.items():  # lista de tuplas mais legivel
+    print(chave, valor)

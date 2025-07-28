@@ -4,7 +4,6 @@ usuarios = {
     "ana": "abcd",
     "maria": "senha123",
     "marcelo": "iou789",
-
 }
 
 # Entrada do usuário
@@ -16,7 +15,6 @@ if usuario in usuarios:
     if senha in usuarios[usuario]:
         print("Acesso permitido")
     else:
-        print("Usuário ou senha incorretos" )
+        print("Usuário ou senha incorretos")
 else:
-    print("Usuário ou senha incorretos" )
-        
+    print("Usuário ou senha incorretos")

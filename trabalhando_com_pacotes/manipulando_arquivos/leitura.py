@@ -1,4 +1,6 @@
-file = open("C:\\projetos\AprendendoPython\\trabalhando_com_pacotes\\manipulando_arquivos\\arquivo.txt", "r")
+file = open(
+    "C:\\projetos\\AprendendoPython\\trabalhando_com_pacotes\\manipulando_arquivos\\arquivo.txt"
+)
 
 print(file.read())
 print(file.readline())

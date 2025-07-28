@@ -1,5 +1,5 @@
 curso = "Python"
-frutas = ["maca","uva","banana"]
+frutas = ["maca", "uva", "banana"]
 saques = [1500, 100]
 
 print("Python" in curso)

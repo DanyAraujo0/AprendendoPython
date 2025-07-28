@@ -1,13 +1,13 @@
 # declarando um conjunto
 
-numeros = set([1,2,3,2,3,4])
+numeros = {1, 2, 3, 2, 3, 4}
 print(numeros)
 
 letras = set("abacaxi")
 print(letras)
 
-linguagens = {"python","java","c","python","java"}
-print(linguagens) # não pode confiar na ordem pois pode ser alterada
+linguagens = {"python", "java", "c", "python", "java"}
+print(linguagens)  # não pode confiar na ordem pois pode ser alterada
 
 # para acessar os valores do conjunto é necessário criar uma lista
 
@@ -21,56 +21,58 @@ for linguagem in linguagens:
 
 # enumerate
 
-for numero, numeros in enumerate (numeros):
+for numero, numeros in enumerate(numeros):
     print(f"{numero}: {numeros}")
 
 # Union - uni dois conjuntos
 
-conjunto_a = {1,2}
-conjunto_b = {3,4}
+conjunto_a = {1, 2}
+conjunto_b = {3, 4}
 
 print(conjunto_a.union(conjunto_b))
 
-# intersection - compara pega os valores repitidos 
+# intersection - compara pega os valores repitidos
 
-conjunto_a = {1,2,3}
-conjunto_b = {2,3,4}
+conjunto_a = {1, 2, 3}
+conjunto_b = {2, 3, 4}
 
 print(conjunto_a.intersection(conjunto_b))
 
-# difference - compara e pega os valores diferentes 
+# difference - compara e pega os valores diferentes
 
-conjunto_a = {1,2,3}
-conjunto_b = {2,3,4}
+conjunto_a = {1, 2, 3}
+conjunto_b = {2, 3, 4}
 
 print(conjunto_a.difference(conjunto_b))
 print(conjunto_b.difference(conjunto_a))
 
 # issubset - compara e retorna true se os valores pertencerem ao conjunto ou false se não
 
-conjunto_a = {1,2,3}
-conjunto_b = {4,1,2,5,6,3}
+conjunto_a = {1, 2, 3}
+conjunto_b = {4, 1, 2, 5, 6, 3}
 
-print(conjunto_a.issubset(conjunto_b)) # os valores do conjunto a existem todos no conjunto b
-print(conjunto_b.issubset(conjunto_a)) # porem os do b não existem todos no a
+print(
+    conjunto_a.issubset(conjunto_b)
+)  # os valores do conjunto a existem todos no conjunto b
+print(conjunto_b.issubset(conjunto_a))  # porem os do b não existem todos no a
 
 # isdisjoint - verifica se os conjuntos não se tocam ou seja se não a valores iguais nos dois conjuntos
 
-conjunto_a = {1,2,3,4,5}
-conjunto_b = {6,7,8,9}
-conjunto_c = {1,0}
+conjunto_a = {1, 2, 3, 4, 5}
+conjunto_b = {6, 7, 8, 9}
+conjunto_c = {1, 0}
 
-print(conjunto_a.isdisjoint(conjunto_b)) # não possuem valores iguais
-print(conjunto_a.isdisjoint(conjunto_c)) # 1 se repete nos dois conjuntos logo false
+print(conjunto_a.isdisjoint(conjunto_b))  # não possuem valores iguais
+print(conjunto_a.isdisjoint(conjunto_c))  # 1 se repete nos dois conjuntos logo false
 
 # add - adiciona valores no conjunto e ignora os repetidos
- 
-sorteio = {1,23}
+
+sorteio = {1, 23}
 
 sorteio.add(25)
 sorteio.add(42)
 print(sorteio)
-sorteio.add(25) # sera ignorado pois ja existe no conjunto
+sorteio.add(25)  # sera ignorado pois ja existe no conjunto
 print(sorteio)
 
 # clear - limpa o conjunto
@@ -93,7 +95,7 @@ print(sorteio)
 
 # pop - remove o primeiro valor adicionado no conjunto
 
-numeros = {1,2,3,4,5,8,9,6}
+numeros = {1, 2, 3, 4, 5, 8, 9, 6}
 print(numeros)
 print(numeros.pop())
 
