@@ -1,0 +1,23 @@
+[
+  "tests/controllers/test_product.py::test_controller_create_should_return_success",
+  "tests/controllers/test_product.py::test_controller_delete_should_return_no_content",
+  "tests/controllers/test_product.py::test_controller_delete_should_return_not_found",
+  "tests/controllers/test_product.py::test_controller_get_should_return_not_found",
+  "tests/controllers/test_product.py::test_controller_get_should_return_success",
+  "tests/controllers/test_product.py::test_controller_patch_should_return_success",
+  "tests/controllers/test_product.py::test_controller_query_should_return_success",
+  "tests/schemas/test_product.py::test_schemas_return_raise",
+  "tests/schemas/test_product.py::test_schemas_return_success",
+  "tests/schemas/test_product.py::test_schemas_return_sucess",
+  "tests/usecases/test_product.py::test_usecases_create_should_return_sucess",
+  "tests/usecases/test_product.py::test_usecases_delete_should_not_found",
+  "tests/usecases/test_product.py::test_usecases_delete_should_return_success",
+  "tests/usecases/test_product.py::test_usecases_get_return_sucess",
+  "tests/usecases/test_product.py::test_usecases_get_should_return_not_found",
+  "tests/usecases/test_product.py::test_usecases_get_should_return_sucess",
+  "tests/usecases/test_product.py::test_usecases_query_should_return_success",
+  "tests/usecases/test_product.py::test_usecases_query_should_return_sucess",
+  "tests/usecases/test_product.py::test_usecases_should_return_sucess",
+  "tests/usecases/test_product.py::test_usecases_update_should_return_success",
+  "tests/usecases/test_product.py::test_usecases_update_should_return_sucess"
+]
